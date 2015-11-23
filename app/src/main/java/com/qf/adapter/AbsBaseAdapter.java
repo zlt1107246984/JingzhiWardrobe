@@ -13,6 +13,7 @@ import java.util.Map;
 
 /**
  * Created by Ken on 2015/11/13.
+ *
  */
 public abstract class AbsBaseAdapter<T> extends BaseAdapter{
     private Context context;
