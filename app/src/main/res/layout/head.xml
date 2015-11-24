@@ -19,11 +19,12 @@
         android:orientation="vertical"
         >
         <LinearLayout
+            android:id="@+id/layout_lab"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
             android:orientation="horizontal">
-            <RadioButton
+            <TextView
                 android:id="@+id/tv_id"
                 android:layout_width="0dp"
                 android:button="@null"
@@ -31,8 +32,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="全部"
-                android:src="@drawable/text_color_press"
-                android:checked="false" />
+                 />
             <LinearLayout
                 android:layout_width="1dp"
                 android:layout_height="40dp"
@@ -40,7 +40,7 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
+            <TextView
                 android:id="@+id/tv_id2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
+            <TextView
                 android:id="@+id/tv_id3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
+            <TextView
                 android:id="@+id/tv_id4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -85,7 +85,8 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
+            <TextView
+                android:id="@+id/tv_id5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -100,13 +101,13 @@
             android:orientation="vertical"
             android:background="#d1cece"/>
         <LinearLayout
-
+            android:id="@+id/layout_lab2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:gravity="center"
             android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/tv_id5"
+            <TextView
+                android:id="@+id/tv_id6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -120,8 +121,8 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
-                android:id="@+id/tv_id6"
+            <TextView
+                android:id="@+id/tv_id7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -135,8 +136,8 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
-                android:id="@+id/tv_id7"
+            <TextView
+                android:id="@+id/tv_id8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -150,8 +151,8 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
-                android:id="@+id/tv_id8"
+            <TextView
+                android:id="@+id/tv_id9"
                 android:button="@null"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -165,8 +166,8 @@
                 android:background="#cec8c8">
 
             </LinearLayout>
-            <RadioButton
-                android:id="@+id/tv_id9"
+            <TextView
+                android:id="@+id/tv_id10"
                 android:layout_width="0dp"
                 android:button="@null"
                 android:layout_height="wrap_content"

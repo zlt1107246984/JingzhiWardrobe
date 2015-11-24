@@ -21,6 +21,8 @@
         android:id="@+id/gd_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"></com.etsy.android.grid.StaggeredGridView>
+        android:numColumns="2">
+
+    </com.etsy.android.grid.StaggeredGridView>
 
 </LinearLayout>
