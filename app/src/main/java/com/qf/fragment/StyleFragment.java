@@ -6,8 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 
 import com.android.volley.VolleyError;
 import com.etsy.android.grid.StaggeredGridView;
@@ -51,10 +49,9 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest {
     public void errorResponse(String url, VolleyError error) {
 
     }
-
     private void initView(View view) {
         gd = (StaggeredGridView) view.findViewById(R.id.gd_id);
-        View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.heard,null);
+        View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.head,null);
         gd .addHeaderView(view2);//设置header
         adapter = new MyGridViewAdapter(getActivity());
     }
