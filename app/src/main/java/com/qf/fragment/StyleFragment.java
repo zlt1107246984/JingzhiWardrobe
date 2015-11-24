@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 
 import com.android.volley.VolleyError;
+import com.etsy.android.grid.StaggeredGridView;
 import com.qf.adapter.MyGridViewAdapter;
 import com.qf.model.DapeiEntity;
 import com.qf.utils.Constants;
@@ -22,13 +24,13 @@ import java.util.List;
  * Created by Administrator on 15-11-21.
  */
 public class StyleFragment extends Fragment implements VolleyUtil.OnRequest {
-    private GridView gd;
+    private StaggeredGridView gd;
     private MyGridViewAdapter adapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.style_layout,null);
-
         initView(view);
         loadData();
         return view;
@@ -51,7 +53,9 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest {
     }
 
     private void initView(View view) {
-        gd = (GridView) view.findViewById(R.id.gd_id);
+        gd = (StaggeredGridView) view.findViewById(R.id.gd_id);
+        View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.heard,null);
+        gd .addHeaderView(view2);//设置header
         adapter = new MyGridViewAdapter(getActivity());
     }
 

@@ -25,7 +25,6 @@ public class MyGridViewAdapter extends AbsBaseAdapter2<DapeiEntity> {
     public void bindDatas(ViewHolder viewHolder, DapeiEntity data) {
         TextView tv = (TextView) viewHolder.getView(R.id.tv_id);
         ImageView iv = (ImageView) viewHolder.getView(R.id.iv_id);
-        Log.e("TAG",data.toString());
         if(data != null){
             if(data.getType() == 0){
                 Date  date = new Date();

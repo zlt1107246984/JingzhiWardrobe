@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_id"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="#f00">
+    </android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:orientation="vertical"
+        android:background="#eae7e7"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/tv_id"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="全部"
+                android:src="@drawable/text_color_press"
+                android:checked="false" />
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:button="@null"
+                android:text="欧美"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:button="@null"
+                android:text="甜美"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                android:button="@null"
+                android:text="修身"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:layout_marginTop="8dp"
+                android:text="男装"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="vertical"
+            android:background="#d1cece"/>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/tv_id5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:text="日韩"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:text="淑女"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:button="@null"
+                android:text="校园"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id8"
+                android:button="@null"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="鞋包"/>
+            <LinearLayout
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:orientation="vertical"
+                android:background="#cec8c8">
+
+            </LinearLayout>
+            <RadioButton
+                android:id="@+id/tv_id9"
+                android:layout_width="0dp"
+                android:button="@null"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="..."/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        android:background="#cec8c8">
+
+    </LinearLayout>
+</LinearLayout>
