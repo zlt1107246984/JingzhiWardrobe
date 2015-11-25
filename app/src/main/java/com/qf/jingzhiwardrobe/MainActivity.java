@@ -74,6 +74,7 @@ public class MainActivity extends FragmentActivity {
                             manager.beginTransaction().show(fragment3).commit();
                         }
                         lastFragment = fragment3;
+                        break;
                     case R.id.rb_button4:
                         Fragment fragment4 = manager.findFragmentByTag("fragment4");
                         if (fragment4 == null) {
