@@ -7,8 +7,8 @@ import android.widget.GridView;
 /**
  * Created by Administrator on 15-11-23.
  */
-public class MyGridView extends GridView {
-    public MyGridView(Context context, AttributeSet attrs) {
+class StaggeredGridView extends GridView {
+    public StaggeredGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
