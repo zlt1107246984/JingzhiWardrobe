@@ -1,6 +1,7 @@
 package com.qf.utils;
 
 import com.qf.model.DapeiEntity;
+import com.qf.model.ListData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
  * Json数据处理
  */
 public class JSONUtil {
+
+
     public static List<DapeiEntity> JsonParser(String jsonStr) {
         List<DapeiEntity> datas = new ArrayList<DapeiEntity>();
         DapeiEntity dapei2 = null;
@@ -46,5 +49,36 @@ public class JSONUtil {
             }
         }
         return datas;
+    }
+
+
+    public static List<ListData> parseJsonData(String json){
+
+        List<ListData> datas = new ArrayList<>();
+        if (json != null){
+            JSONObject jsonObject = null;
+            JSONArray jsonArray = null;
+            ListData data = null;
+            try {
+                jsonObject = new JSONObject(json);
+                jsonArray = jsonObject.getJSONArray("material");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    data = new ListData();
+                    jsonObject = jsonArray.getJSONObject(i);
+                    data.setCutMsg(jsonObject.optString("sUserData4"));
+                    data.setDataMsg(jsonObject.optString("sUserData2"));
+                    data.setImageUrl(jsonObject.optString("sMaterialUrl"));
+                    data.setSmallImageUrl(jsonObject.optString("sMaterialUrl1"));
+                    datas.add(data);
+                }
+                return datas;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+        return null;
     }
 }
