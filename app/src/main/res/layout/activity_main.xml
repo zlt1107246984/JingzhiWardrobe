@@ -16,7 +16,6 @@
         android:orientation="vertical"
         android:background="#ECE9D8"
         android:layout_above="@+id/rg_group">
-
     </LinearLayout>
     <RadioGroup
         android:id="@+id/rg_group"

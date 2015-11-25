@@ -92,6 +92,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:button="@null"
+                android:onClick="click"
                 android:text="男装"/>
 
         </LinearLayout>

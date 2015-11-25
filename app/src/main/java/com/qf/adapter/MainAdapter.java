@@ -24,7 +24,6 @@ public class MainAdapter extends AbsBaseAdapter2<mainEntity> {
     public void bindDatas(ViewHolder viewHolder, mainEntity data) {
         TextView tv = (TextView) viewHolder.getView(R.id.tv_id);
         ImageView iv = (ImageView) viewHolder.getView(R.id.iv_id);
-        Log.e("print",data.toString());
         if(data != null){
             if(data.getType() == 0){
                 Date date = new Date();
