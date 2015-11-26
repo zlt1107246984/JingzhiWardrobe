@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:visibility="gone"
+    android:id="@+id/top_visible_layout">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/more_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="#fff"
+            >
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontal_tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#5000" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="全部" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="女装" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="男装" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="女鞋" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="男鞋" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:clickable="true"
+                                    android:text="化妆品" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_7"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="箱包" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_8"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="运动" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="15dp"
+                                    android:clickable="true"
+                                    android:text="配饰" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="#ccc" />
+
+                            <LinearLayout
+                                android:layout_width="60dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:id="@+id/tv_tab_10"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    android:clickable="true"
+                                    android:text="奢侈品" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#4000" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="top"
+                    android:background="#5000" />
+
+                <ImageView
+                    android:id="@+id/iv_tab_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/more" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="top"
+                    android:background="#5000" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- 。。。。。。。。。。。。。。。。。。。。。。。。-->
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#fff"
+            android:id="@+id/horizontal_tab_hide"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ccc"
+                android:layout_alignParentTop="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所有栏目"
+                android:layout_marginLeft="20dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_centerVertical="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/more_up"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:id="@+id/more_tab_up"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ccc"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
