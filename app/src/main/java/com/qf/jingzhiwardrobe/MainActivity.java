@@ -10,13 +10,13 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import com.qf.fragment.CircleFragment;
-import com.qf.fragment.HomeFragment;
+import com.qf.fragment.HomeFragment2;
 import com.qf.fragment.MineFragment;
 import com.qf.fragment.StyleFragment;
 import com.qf.fragment.WardrobeFragment;
 
 public class MainActivity extends FragmentActivity {
-    private HomeFragment fragment = null;
+    private HomeFragment2 fragment = null;
     private FragmentManager manager;
     private FragmentTransaction action;
     private RadioGroup layout;
@@ -34,7 +34,7 @@ public class MainActivity extends FragmentActivity {
     *
     */
     private void loadData() {
-        fragment = new HomeFragment();
+        fragment = new HomeFragment2();
         manager = getSupportFragmentManager();
         layout.getChildAt(0).performClick();
         action = manager.beginTransaction();

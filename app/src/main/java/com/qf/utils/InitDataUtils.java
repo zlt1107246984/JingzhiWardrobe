@@ -13,6 +13,8 @@ public class InitDataUtils {
 
     private static TextView[] horizontaltv;
     private static TextView[] popupwindowtv;
+    private static TextView[] tabhorizontaltv;
+    private static TextView[] tabpopupwindowtv;
 
     public static TextView[] getHorizontalData(View view){
 
@@ -58,6 +60,31 @@ public class InitDataUtils {
         }
         return popupwindowtv;
     }
+    public static TextView[] getTabHorizontalData(View view){
 
+        if (view != null) {
+
+            TextView tv = (TextView) view.findViewById(R.id.tv_tab_1);
+            tv.setTextColor(Color.RED);
+
+            horizontaltv = new TextView[]{
+                    tv,
+                    (TextView) view.findViewById(R.id.tv_tab_2),
+                    (TextView) view.findViewById(R.id.tv_tab_3),
+                    (TextView) view.findViewById(R.id.tv_tab_4),
+                    (TextView) view.findViewById(R.id.tv_tab_5),
+                    (TextView) view.findViewById(R.id.tv_tab_6),
+                    (TextView) view.findViewById(R.id.tv_tab_7),
+                    (TextView) view.findViewById(R.id.tv_tab_8),
+                    (TextView) view.findViewById(R.id.tv_tab_9),
+                    (TextView) view.findViewById(R.id.tv_tab_10),
+
+            };
+        }
+
+
+        return horizontaltv;
+
+    }
 
 }
