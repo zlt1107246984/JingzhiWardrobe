@@ -22,6 +22,7 @@ public interface Constants {
         //展示数据的URL
         String LIST_VIEW_DATA = "http://wq.jd.com/mcoss/focuscpt/qqshow?id=2482&tpl=3&pageindex=1&pagesize=20&category=%s&level=1&ch=8&extid=1";
         String LAST_DATA = "http://wqs.jd.com/data/coss/recovery/focuscpt2/2482/94ab878e825510126f413197b2dea068.shtml?id=2482&tpl=3&pageindex=1&pagesize=20&category=4&level=1&ch=8&extid=1";
+        String POPUPDATA ="http://wq.jd.com/dpsearch/search?datatype=1&scene=1&pagesize=40&key=%s&page=%d";
     }
 
     interface BUNDLE_KEY{
