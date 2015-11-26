@@ -2,7 +2,6 @@ package com.qf.utils;
 
 import android.util.Log;
 
-import com.qf.jingzhiwardrobe.MainActivity;
 import com.qf.model.DapeiEntity;
 import com.qf.model.mainEntity;
 import com.qf.model.ListData;
