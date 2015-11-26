@@ -149,6 +149,7 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
 
     @Override
     public void onPageSelected(int position) {
+
         inv.selectIndex(position);
     }
 

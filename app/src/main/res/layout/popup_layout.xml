@@ -100,7 +100,7 @@
                             android:id="@+id/imageView2"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/weiyi1" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -124,7 +124,7 @@
                             android:id="@+id/imageView3"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/zhenzhijpg" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -148,7 +148,7 @@
                             android:id="@+id/imageView4"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/fengyi" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -172,7 +172,7 @@
                             android:id="@+id/imageView5"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/dayi" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -254,7 +254,7 @@
                             android:id="@+id/imageView7"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/oll" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -278,7 +278,7 @@
                             android:id="@+id/imageView8"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/yinglun" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -302,7 +302,7 @@
                             android:id="@+id/imageView9"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/minzu" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -516,7 +516,7 @@
                             android:id="@+id/imageView12"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/yuehiu" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -540,7 +540,7 @@
                             android:id="@+id/imageView13"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/yanhui" />
 
                         <TextView
                             android:layout_width="60dp"
@@ -564,7 +564,7 @@
                             android:id="@+id/imageView14"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@mipmap/ic_launcher" />
+                            android:src="@drawable/chuyou" />
 
                         <TextView
                             android:layout_width="60dp"
