@@ -56,6 +56,8 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
     private ViewpagerAdapter adapter;
     private int[] images={R.drawable.ad1,R.drawable.ad2,R.drawable.ad3};
     private ImgNavView inv;
+    private String newUrl="11437";
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -83,7 +85,6 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
 
 
     }
-
     private void loadData(String url, BaseAdapter adapter) {
 
         VolleyUtil.requestString(url, this);
@@ -192,6 +193,7 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
     }
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
             case R.id.tv_id:
                 loadData(Constants.URL.mainUrl, mainAdapter);
@@ -233,8 +235,8 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
                 break;
             case R.id.tv_id9:
                 page =1;
-                loadData(String.format(Constants.URL.POPUPDATA,"811437",page), madapter);
-                loadMore("811437",page);
+                loadData(String.format(Constants.URL.POPUPDATA, newUrl,page), madapter);
+                loadMore(newUrl,page);
                 break;
             case R.id.tv_id10:
                 showPopupwin(view);
@@ -243,125 +245,153 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
                 window.dismiss();
                 break;
             case R.id.imageView2:
-                loadData(String.format(Constants.URL.POPUPDATA,"12203",1), madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"12203",page), madapter);
                 window.dismiss();
                 tv9.setText("卫衣");
+                newUrl = "812203";
+                loadMore("12203",page);
                 break;
             case R.id.imageView3:
-                loadData(String.format(Constants.URL.POPUPDATA,"11087",1), madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA, "11087", page), madapter);
                 window.dismiss();
                 tv9.setText("针织");
+                newUrl = "11087";
+                loadMore("11087",page);
                 break;
             case R.id.imageView4:
                 loadData(String.format(Constants.URL.POPUPDATA,"12532",1), madapter);
                 window.dismiss();
                 tv9.setText("风衣");
+                newUrl="12532";
                 break;
             case R.id.imageView5:
                 loadData(String.format(Constants.URL.POPUPDATA,"13732",1), madapter);
                 window.dismiss();
                 tv9.setText("大衣");
+                newUrl = "13732";
                 break;
             case R.id.imageView7:
                 loadData(String.format(Constants.URL.POPUPDATA,"8998",1), madapter);
                 window.dismiss();
                 tv9.setText("ol");
+                newUrl = "8998";
                 break;
             case R.id.imageView8:
                 loadData(String.format(Constants.URL.POPUPDATA,"9005",1), madapter);
                 window.dismiss();
                 tv9.setText("英伦");
+                newUrl = "9005";
                 break;
             case R.id.imageView9:
                 loadData(String.format(Constants.URL.POPUPDATA,"8847",1), madapter);
                 window.dismiss();
                 tv9.setText("民族");
+                newUrl = "8847";
                 break;
 
             case R.id.imageView12:
                 loadData(String.format(Constants.URL.POPUPDATA,"9007",1), madapter);
                 window.dismiss();
                 tv9.setText("约会");
+                newUrl = "9007";
                 break;
             case R.id.imageView13:
                 loadData(String.format(Constants.URL.POPUPDATA,"8979",1), madapter);
                 window.dismiss();
                 tv9.setText("宴会");
+                newUrl = "8979";
                 break;
             case R.id.imageView14:
                 loadData(String.format(Constants.URL.POPUPDATA,"9033",1), madapter);
                 window.dismiss();
                 tv9.setText("出游");
+                newUrl = "9033";
                 break;
             case R.id.bt_id:
                 loadData(String.format(Constants.URL.POPUPDATA,"8977",1), madapter);
                 window.dismiss();
                 tv9.setText(bt1.getText());
+                newUrl = "8977";
                 break;
             case R.id.bt_id2:
                 loadData(String.format(Constants.URL.POPUPDATA,"8969",1), madapter);
                 window.dismiss();
                 tv9.setText(bt2.getText());
+                newUrl = "8969";
                 break;
             case R.id.bt_id3:
                 loadData(String.format(Constants.URL.POPUPDATA, "8855", 1), madapter);
                 window.dismiss();
                 tv9.setText(bt3.getText());
+                newUrl = "8855";
                 break;
             case R.id.bt_id4:
                 loadData(String.format(Constants.URL.POPUPDATA,"8862",1), madapter);
                 window.dismiss();
                 tv9.setText(bt4.getText());
+                newUrl = "8862";
                 break;
             case R.id.bt_id5:
                 loadData(String.format(Constants.URL.POPUPDATA,"8995",1), madapter);
                 window.dismiss();
                 tv9.setText(bt5.getText());
+                newUrl = "8995";
                 break;
             case R.id.bt_id6:
                 loadData(String.format(Constants.URL.POPUPDATA,"8999",1), madapter);
                 window.dismiss();
                 tv9.setText(bt6.getText());
+                newUrl = "8999";
                 break;
             case R.id.bt_id7:
                 loadData(String.format(Constants.URL.POPUPDATA,"9031",1), madapter);
                 window.dismiss();
                 tv9.setText(bt7.getText());
+                newUrl = "9031";
                 break;
             case R.id.bt_id8:
                 loadData(String.format(Constants.URL.POPUPDATA,"9000",1), madapter);
                 window.dismiss();
                 tv9.setText(bt8.getText());
+                newUrl = "9000";
                 break;
             case R.id.bt_id9:
                 loadData(String.format(Constants.URL.POPUPDATA,"9875",1), madapter);
                 window.dismiss();
                 tv9.setText(bt9.getText());
+                newUrl = "9875";
                 break;
             case R.id.bt_id10:
                 loadData(String.format(Constants.URL.POPUPDATA,"8848",1), madapter);
                 window.dismiss();
                 tv9.setText(bt10.getText());
+                newUrl = "8848";
                 break;
             case R.id.bt_id11:
                 loadData(String.format(Constants.URL.POPUPDATA, "9356", 1), madapter);
                 window.dismiss();
                 tv9.setText(bt11.getText());
+                newUrl = "9536";
                 break;
             case R.id.bt_id12:
                 loadData(String.format(Constants.URL.POPUPDATA,"8980",1), madapter);
                 window.dismiss();
                 tv9.setText(bt12.getText());
+                newUrl = "8980";
                 break;
             case R.id.bt_id13:
                 loadData(String.format(Constants.URL.POPUPDATA,"9842",1), madapter);
                 window.dismiss();
                 tv9.setText(bt13.getText());
+                newUrl = "9842";
                 break;
             case R.id.bt_id14:
                 loadData(String.format(Constants.URL.POPUPDATA,"8863",1), madapter);
                 window.dismiss();
                 tv9.setText("运动");
+                newUrl = "8863";
                 break;
         }
 
@@ -385,26 +415,20 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
 
     }
     public void loadMore( String url1 ,  int page1){
-         page = page1;
+        page = page1;
         url = url1;
-
         gd.setScrollListener(new AbsListView.OnScrollListener() {
-
             private Animation animation;
-
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
             }
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                Log.e("Tag",firstVisibleItem+"");
+                Log.e("Tag",totalItemCount+"");
                 if(totalItemCount!= 2){
                     if (lastInScreen == totalItemCount){
-                          if (firstVisibleItem>5){
-                              image.setVisibility(View.VISIBLE);
-                          }
+                           image.setVisibility(View.VISIBLE);
                            image.setOnClickListener(new View.OnClickListener() {
                                @Override
                                public void onClick(View v) {
@@ -413,13 +437,12 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
                                    loadData(String.format(Constants.URL.POPUPDATA, url,1), madapter);
                                }
                            });
-                        loadData(String.format(Constants.URL.POPUPDATA, url, page++), madapter);
+                       loadData(String.format(Constants.URL.POPUPDATA, url, page++), madapter);
                     }
                 }
 
             }
         });
-
     }
 
     @Override

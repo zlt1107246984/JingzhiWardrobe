@@ -248,13 +248,13 @@ public class GridViewPullToFresh extends LinearLayout implements View.OnTouchLis
     }
     public void setScrollListener(AbsListView.OnScrollListener onScrollListener){
         sg.setOnScrollListener(onScrollListener);
-
     }
     public StaggeredGridView getLv() {
         return sg;
     }
     public void backTop(int positon){
-        sg.setSelection(0);
+
+        sg.setSelection(positon);
     }
 
     /**
