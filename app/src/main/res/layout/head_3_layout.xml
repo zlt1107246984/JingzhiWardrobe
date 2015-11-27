@@ -39,7 +39,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="170dp"
-            android:background="#64499b" />
+            android:background="#c37ed4"
+           >
+          <android.support.v4.view.ViewPager
+              android:id="@+id/vp"
+              android:layout_width="match_parent"
+              android:layout_height="130dp"
+              android:layout_gravity="center"/>
+
+        </LinearLayout>
 
 
 

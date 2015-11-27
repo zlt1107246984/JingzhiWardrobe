@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -236,6 +237,9 @@ public class BasePullRefreshView extends LinearLayout implements View.OnTouchLis
 
     public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener){
         lv.setOnItemClickListener(onItemClickListener);
+    }
+    public void setOnScrollListener(AbsListView.OnScrollListener onScrollListener){
+        lv.setOnScrollListener(onScrollListener);
     }
 
     public ListView getLv() {
