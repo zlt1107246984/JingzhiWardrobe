@@ -28,7 +28,7 @@ public class JSONUtil {
                 JSONObject jsonObject = new JSONObject(jsonStr3);
                 JSONObject jsonObject1 = jsonObject.getJSONObject("data");
                 JSONArray jsonArray = jsonObject1.getJSONArray("dapei");
-                for (int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i <= jsonArray.length(); i++) {
                     dapei2 = new DapeiEntity();
                     if (jsonArray != null) {
                         JSONObject jsonObject2 = jsonArray.getJSONObject(i);
@@ -94,7 +94,7 @@ public class JSONUtil {
                 JSONObject jsonObject1 = jsonObject.getJSONObject("data");
                 JSONArray jsonArray = jsonObject1.getJSONArray("dapei");
 
-                for (int i = 0; i < jsonArray.length(); i++) {
+                for (int i = 0; i <= jsonArray.length(); i++) {
                     data2 = new mainEntity();
                     if (jsonArray != null) {
                         if (i == 0) {
@@ -102,7 +102,7 @@ public class JSONUtil {
                             data2.setMainlogo(null);
                             data2.setTitle(null);
                         } else {
-                            JSONObject jsonObject2 = jsonArray.getJSONObject(i);
+                            JSONObject jsonObject2 = jsonArray.getJSONObject(i-1);
                             data2.setMainlogo(jsonObject2.getString("mainlogo"));
                             data2.setTitle(jsonObject2.getString("title"));
                             data2.setType(1);
