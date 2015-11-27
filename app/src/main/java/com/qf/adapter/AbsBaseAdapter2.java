@@ -1,6 +1,7 @@
 package com.qf.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ public abstract class AbsBaseAdapter2<T> extends BaseAdapter{
     private Context context;
     private List<T> datas;
     private int[] resid;
-
+    private boolean isFresh;
     public AbsBaseAdapter2(Context context, int... resid){
         this.context = context;
         this.resid = resid;
@@ -27,15 +28,17 @@ public abstract class AbsBaseAdapter2<T> extends BaseAdapter{
     }
 
     public void setDatas(List<T> datas){
-        this.datas.clear();
-        addDatas(datas);
+            this.datas.clear();
+            addDatas(datas);
     }
 
     public void addDatas(List<T> datas){
         this.datas.addAll(datas);
         this.notifyDataSetChanged();
     }
-
+    public void setFresh(boolean isFresh){
+        this.isFresh = isFresh;
+    }
     protected List<T> getDatas(){
         return datas;
     }

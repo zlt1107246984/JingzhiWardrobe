@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_marginTop="10dp"
     android:id="@+id/layot_main"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center">
@@ -18,12 +19,24 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-    <com.etsy.android.grid.StaggeredGridView
+    <com.qf.custom.GridViewPullToFresh
         android:id="@+id/gd_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/layout1"
         android:numColumns="2">
 
-    </com.etsy.android.grid.StaggeredGridView>
-
-</LinearLayout>
+    </com.qf.custom.GridViewPullToFresh>
+    <Button
+        android:id="@+id/iv_top"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/icon_top"
+        android:layout_marginRight="22dp"
+        android:layout_marginEnd="22dp"
+        android:visibility="gone"
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

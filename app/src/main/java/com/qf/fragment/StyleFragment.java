@@ -3,11 +3,14 @@ package com.qf.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,36 +18,44 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.android.volley.VolleyError;
-import com.etsy.android.grid.StaggeredGridView;
 import com.qf.adapter.MainAdapter;
 import com.qf.adapter.MyGridViewAdapter;
+import com.qf.adapter.ViewpagerAdapter;
+import com.qf.autoscrollviewpager.AutoScrollViewPager;
+import com.qf.custom.GridViewPullToFresh;
+import com.qf.custom.ImgNavView;
 import com.qf.model.DapeiEntity;
 import com.qf.model.mainEntity;
 import com.qf.utils.Constants;
 import com.qf.utils.JSONUtil;
 import com.qf.utils.VolleyUtil;
 import com.qf.jingzhiwardrobe.R;
-
+import android.view.animation.Animation;
 import java.util.List;
 
 /**
  * Created by Administrator on 15-11-21.
  */
-public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, View.OnClickListener {
-    private StaggeredGridView gd;
+public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, View.OnClickListener,ViewPager.OnPageChangeListener {
+    private GridViewPullToFresh gd;
     private MyGridViewAdapter madapter;
     private LinearLayout layout1, layout2;
     private MainAdapter mainAdapter;
     private TextView tv, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10;
     private ImageView iv1,iv2,iv3,iv4,iv5,iv6,iv7,iv8,iv9,iv10,iv11;
-    private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13,bt14;
+    private Button bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,bt10,bt11,bt12,bt13,bt14,image;
     private View view;
     private ScrollView sv;
     private View view3;
     private PopupWindow window;
-
+    private int page=1;
+    private boolean isFresh =false;
+    private String url;
+    private AutoScrollViewPager viewPager;
+    private ViewpagerAdapter adapter;
+    private int[] images={R.drawable.ad1,R.drawable.ad2,R.drawable.ad3};
+    private ImgNavView inv;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -74,6 +85,7 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
     }
 
     private void loadData(String url, BaseAdapter adapter) {
+
         VolleyUtil.requestString(url, this);
         gd.setAdapter(adapter);
     }
@@ -96,10 +108,35 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
     }
 
     private void initView(View view) {
-        gd = (StaggeredGridView) view.findViewById(R.id.gd_id);
+        gd = (GridViewPullToFresh) view.findViewById(R.id.gd_id);
+
         View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.head, null);
+        View view4 = LayoutInflater.from(getActivity()).inflate(R.layout.gridview_footer,null);
+        gd.addHeader(view2);
+        gd.addFooter(view4);
         view3 = LayoutInflater.from(getActivity()).inflate(R.layout.popup_layout,null);
-        gd.addHeaderView(view2);//设置header
+        gd.setHeadView(R.layout.pulltofresh_layout);
+        gd.setOnRefresh(new GridViewPullToFresh.OnRefreshListener() {
+            @Override
+            public boolean pullMoveY(int movey, View headView) {
+                return false;
+            }
+
+            @Override
+            public void pullRefresh(int movey, View headView) {
+
+            }
+
+            @Override
+            public void refreshing(View headView) {
+
+            }
+
+            @Override
+            public void refreshCompelet(View headView) {
+
+            }
+        });
         madapter = new MyGridViewAdapter(getActivity());
         mainAdapter = new MainAdapter(getActivity());
         layout1 = (LinearLayout) view2.findViewById(R.id.layout_lab);
@@ -140,20 +177,19 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
         bt12= (Button) view3.findViewById(R.id.bt_id12);
         bt13= (Button) view3.findViewById(R.id.bt_id13);
         bt14= (Button) view3.findViewById(R.id.bt_id14);
-        initClickEvent();
+        image = (Button) view.findViewById(R.id.iv_top);
+        inv = (ImgNavView) view2.findViewById(R.id.inv_id);
+        inv.setCount(images.length);
+        adapter = new ViewpagerAdapter(getContext(),images);
+        viewPager = (AutoScrollViewPager) view2.findViewById(R.id.vp_id);
+        viewPager.setInterval(2000);//设置循环的时间间隔
+        viewPager.setSlideBorderMode(AutoScrollViewPager.SLIDE_BORDER_MODE_NONE);
+        viewPager.setAdapter(adapter);
+
+        viewPager.startAutoScroll();
+
+        viewPager.addOnPageChangeListener(this);
     }
-
-    private void initClickEvent() {
-        for (int i = 0; i < 10; i++) {
-            if (i < 5) {
-                layout1.getChildAt(i).setOnClickListener(this);
-
-            } else {
-                layout2.getChildAt(i - 5).setOnClickListener(this);
-            }
-        }
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -161,28 +197,44 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
                 loadData(Constants.URL.mainUrl, mainAdapter);
                 break;
             case R.id.tv_id2:
-                loadData(Constants.URL.ouMeiUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"8988",page), madapter);
+                loadMore("8988", page);
                 break;
             case R.id.tv_id3:
-                loadData(Constants.URL.sweetUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"8967",page), madapter);
+                loadMore("8967", page);
                 break;
             case R.id.tv_id4:
-                loadData(Constants.URL.slimUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"9034",page), madapter);
+                loadMore("9034", page);
                 break;
             case R.id.tv_id5:
-                loadData(Constants.URL.boyUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"9935",page), madapter);
+                loadMore("9935", page);
                 break;
             case R.id.tv_id6:
-                loadData(Constants.URL.hanUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"9553",page), madapter);
+                loadMore("9553", page);
                 break;
             case R.id.tv_id7:
-                loadData(Constants.URL.girlUrl, madapter);
+                page  =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"8996",page), madapter);
+                loadMore("8996",page);
                 break;
             case R.id.tv_id8:
-                loadData(Constants.URL.schoolUrl, madapter);
+                page = 1;
+                loadData(String.format(Constants.URL.POPUPDATA,"11582",page), madapter);
+                loadMore("11582",page);
                 break;
             case R.id.tv_id9:
-                loadData(Constants.URL.packageUrl, madapter);
+                page =1;
+                loadData(String.format(Constants.URL.POPUPDATA,"811437",page), madapter);
+                loadMore("811437",page);
                 break;
             case R.id.tv_id10:
                 showPopupwin(view);
@@ -213,7 +265,7 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
             case R.id.imageView7:
                 loadData(String.format(Constants.URL.POPUPDATA,"8998",1), madapter);
                 window.dismiss();
-                tv9.setText("OL");
+                tv9.setText("ol");
                 break;
             case R.id.imageView8:
                 loadData(String.format(Constants.URL.POPUPDATA,"9005",1), madapter);
@@ -330,6 +382,58 @@ public class StyleFragment extends Fragment implements VolleyUtil.OnRequest, Vie
                 .getAttributes();
         lp.alpha = bgAlpha;
         getActivity().getWindow().setAttributes(lp);
+
+    }
+    public void loadMore( String url1 ,  int page1){
+         page = page1;
+        url = url1;
+
+        gd.setScrollListener(new AbsListView.OnScrollListener() {
+
+            private Animation animation;
+
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int lastInScreen = firstVisibleItem + visibleItemCount;
+                Log.e("Tag",firstVisibleItem+"");
+                if(totalItemCount!= 2){
+                    if (lastInScreen == totalItemCount){
+                          if (firstVisibleItem>5){
+                              image.setVisibility(View.VISIBLE);
+                          }
+                           image.setOnClickListener(new View.OnClickListener() {
+                               @Override
+                               public void onClick(View v) {
+                                   gd.backTop(0);
+                                   image.setVisibility(View.GONE);
+                                   loadData(String.format(Constants.URL.POPUPDATA, url,1), madapter);
+                               }
+                           });
+                        loadData(String.format(Constants.URL.POPUPDATA, url, page++), madapter);
+                    }
+                }
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        inv.selectIndex(position);
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
 
     }
 }
