@@ -37,6 +37,7 @@ import com.qf.utils.InitDataUtils;
 import com.qf.utils.JSONUtil;
 import com.qf.utils.VolleyUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,6 +84,8 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
     private static List<ViewPagerData> vpdatas;
     private ViewPager vp;
     private String vpurl;
+    private ViewPagerFragment vpf;
+    private List<Fragment> fragments = new ArrayList<>();
 
 
     @Nullable
@@ -212,11 +215,53 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
             }
             if (urls.equals(vpurl)){
                 vpdatas = JSONUtil.parseVPJsonData(response);
-                vp.setAdapter(new VPAdapter(getFragmentManager(),vpdatas));
+                final List<Fragment> fts = getFt(vpdatas);
+                vp.setAdapter(new VPAdapter(getFragmentManager(),fts));
+                Log.e(TAG, "vpdatas------>" + fts.size());
+                Log.e(TAG,"fragments------>"+fts.size());
+                vp.setCurrentItem(1,false);
+                vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                    }
+                    //实现无限循环
+                    @Override
+                    public void onPageSelected(int position) {
+
+                        if ( fts.size() > 1) { //多于1，才会循环跳转
+                            if ( position < 1) { //首位之前，跳转到末尾（N）
+                                position = 4;
+                                vp.setCurrentItem(position,false);
+                            } else if ( position > 4) { //末位之后，跳转到首位（1）
+                                position = 1;
+                                vp.setCurrentItem(position,false); //false:不显示跳转过程的动画
+
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {
+
+                    }
+                });
             }
 
         }
 
+    }
+
+    private List<Fragment> getFt(List<ViewPagerData> vpdatas){
+        ViewPagerFragment vpft;
+        fragments.add(new BlankFragment());
+        for (int i = 0; i < vpdatas.size(); i++) {
+            vpft = new ViewPagerFragment();
+            fragments.add(vpft);
+        }
+        fragments.add(new BlankFragment());
+        return fragments;
     }
 
     @Override
@@ -541,25 +586,25 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
     //viewpager  的适配器
     class VPAdapter extends FragmentStatePagerAdapter{
 
-        private List<ViewPagerData> vpDatas;
+        private List<Fragment> vpfts;
 
-        public VPAdapter(FragmentManager fm, List<ViewPagerData> vpDatas) {
+        public VPAdapter(FragmentManager fm, List<Fragment> vpfts) {
             super(fm);
-            this.vpDatas = vpDatas;
+            this.vpfts = vpfts;
         }
 
         @Override
         public Fragment getItem(int position) {
-            ViewPagerFragment vpf = new ViewPagerFragment();
+
             Bundle bundle = new Bundle();
             bundle.putInt("position", position);
-            vpf.setArguments(bundle);
-            return vpf;
+            vpfts.get(position).setArguments(bundle);
+            return vpfts.get(position);
         }
 
         @Override
         public int getCount() {
-            return vpDatas.size();
+            return vpfts.size();
         }
     }
 }

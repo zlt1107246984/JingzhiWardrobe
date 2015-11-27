@@ -1,7 +1,5 @@
 package com.qf.utils;
 
-import android.util.Log;
-
 import com.qf.model.DapeiEntity;
 import com.qf.model.ListData;
 import com.qf.model.ViewPagerData;
@@ -135,6 +133,9 @@ public class JSONUtil {
                 jsonObject = jsonObject.getJSONObject("data");
                 jsonArray = jsonObject.getJSONArray("list");
 
+                data = new ViewPagerData();
+                vpdatas.add(data);
+
                 for (int i = 0; i <= jsonArray.length(); i++) {
                     data = new ViewPagerData();
                     jsonObject = (JSONObject) jsonArray.get(i);
@@ -149,6 +150,8 @@ public class JSONUtil {
                 e.printStackTrace();
             }
         }
+        data = new ViewPagerData();
+        vpdatas.add(data);
         return vpdatas;
 
     }
