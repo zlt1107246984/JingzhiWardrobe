@@ -81,7 +81,7 @@ public class VolleyUtil {
     }
 
     public interface OnRequest{
-        void response(String url, String response);
-        void errorResponse(String url, VolleyError error);
+        void response(String urls, String response);
+        void errorResponse(String urls, VolleyError error);
     }
 }

@@ -3,15 +3,16 @@ package com.qf.utils;
 import android.util.Log;
 
 import com.qf.model.DapeiEntity;
-import com.qf.model.mainEntity;
 import com.qf.model.ListData;
+import com.qf.model.ViewPagerData;
+import com.qf.model.mainEntity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Json数据处理
@@ -116,5 +117,39 @@ public class JSONUtil {
             }
         }
         return datas2;
+    }
+
+    public static List<ViewPagerData> parseVPJsonData(String msg){
+
+        List<ViewPagerData> vpdatas = new ArrayList<ViewPagerData>();
+        ViewPagerData data = null;
+        JSONObject jsonObject = null;
+        JSONArray jsonArray = null;
+        if(msg != null){
+            String[] str = msg.split("\\(");
+            String[] msgStr = str[1].split("\\)");
+            String jsonStr = msgStr[0];
+            try {
+
+                jsonObject  = new JSONObject(jsonStr);
+                jsonObject = jsonObject.getJSONObject("data");
+                jsonArray = jsonObject.getJSONArray("list");
+
+                for (int i = 0; i <= jsonArray.length(); i++) {
+                    data = new ViewPagerData();
+                    jsonObject = (JSONObject) jsonArray.get(i);
+                    data.setDwActMinPrice(jsonObject.optString("dwActMinPrice"));
+                    data.setsImg(jsonObject.optString("sImg120x120"));
+                    data.setsItemName(jsonObject.optString("sItemName"));
+
+                    vpdatas.add(data);
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return vpdatas;
+
     }
 }

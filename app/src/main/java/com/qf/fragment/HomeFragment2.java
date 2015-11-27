@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +31,7 @@ import com.qf.autoscrollviewpager.AutoScrollViewPager;
 import com.qf.custom.ImgNavView;
 import com.qf.jingzhiwardrobe.R;
 import com.qf.model.ListData;
+import com.qf.model.ViewPagerData;
 import com.qf.utils.Constants;
 import com.qf.utils.InitDataUtils;
 import com.qf.utils.JSONUtil;
@@ -58,7 +61,6 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
     private LinearLayout moreLayout;
     private LinearLayout tabLayout;
     private LinearLayout moreTabLayout;
-    private LinearLayout topTab;
     private RelativeLayout hideLayout;
     private RelativeLayout hideTabLayout;
     private TextView[] horizontaltv;
@@ -71,10 +73,16 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
     private LinearLayout head2;
     private LinearLayout head3;
     private LinearLayout head4;
+    private String strcategory = "";
+    private int pageindex = 1;
     private String[] category = new String[]{
             "", "1", "2", "3", "5", "10", "7", "6", "8", "4"
     };
-    private String url = String.format(Constants.URL.LIST_VIEW_DATA, category[0]);
+    private String url = String.format(Constants.URL.LIST_VIEW_DATA,pageindex, strcategory);
+    private List<ListData> datas;
+    private static List<ViewPagerData> vpdatas;
+    private ViewPager vp;
+    private String vpurl;
 
 
     @Nullable
@@ -83,6 +91,7 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         View view = inflater.inflate(R.layout.home_layout, null);
         initView(view);
         getData();
+        getVPData();
         return view;
     }
 
@@ -92,6 +101,7 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         head2 = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.head_2_layout, null);
         head3 = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.head_3_layout, null);
         head4 = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.head_4_layout, null);
+        vp = (ViewPager) head3.findViewById(R.id.vp);
         tabLayout = (LinearLayout) view.findViewById(R.id.top_visible_layout);
         LinearLayout blank = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.blank_layout,null);
         //布局中的horizontalview
@@ -128,6 +138,7 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         myListView.addHeaderView(head4);
         myListView.setOnScrollListener(this);//设置ListView的滚动监听
         myListView.setOnTouchListener(this);
+
 
         listAdapter = new ListViewAdapter(getActivity());
         //horizontalview 的更多和返回
@@ -172,18 +183,37 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         VolleyUtil.requestString(url, this);
     }
 
+    private void getVPData() {
+
+        vpurl = Constants.URL.VIEWPAGER_DATA;
+        Log.e("print", "vpurl------------->>>" + vpurl);
+        VolleyUtil.requestString(vpurl, this);
+    }
+
+    public static List<ViewPagerData> getData2VP(){
+        return vpdatas;
+    }
+
 
     //下载数据的监听
     @Override
-    public void response(String url, String response) {
+    public void response(String urls, String response) {
 
         if (response != null) {
-            List<ListData> datas = JSONUtil.parseJsonData(response);
-            Log.e("print", "------------->>>" + datas.size());
-            listAdapter.setDatas(datas);
-            myListView.setAdapter(listAdapter);
-            //Log.e(TAG,"stop_position================>>>"+stop_position);
-            myListView.setSelection(stop_position);
+            if (urls.equals(url)) {
+                Log.e(TAG,"response================>>>"+response);
+                datas = JSONUtil.parseJsonData(response);
+                Log.e("print", "------------->>>" + datas.size());
+                if (datas.size() == 0) return;
+                listAdapter.setDatas(datas);
+                myListView.setAdapter(listAdapter);
+                //Log.e(TAG,"stop_position================>>>"+stop_position);
+                myListView.setSelection(stop_position);
+            }
+            if (urls.equals(vpurl)){
+                vpdatas = JSONUtil.parseVPJsonData(response);
+                vp.setAdapter(new VPAdapter(getFragmentManager(),vpdatas));
+            }
 
         }
 
@@ -369,15 +399,19 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         for (int i = 0; i < horizontaltv.length; i++) {
             if (horizontaltv[i].getId() == resid) {
                 horizontaltv[i].setTextColor(Color.RED);
+                tabhorizontaltv[i].setTextColor(Color.RED);
                 popupwindowtv[i].setTextColor(Color.RED);
+                strcategory = category[i];
+                Log.e(TAG,"horizontalGetData---------------->>>"+strcategory);
                 //如果再次点击时，数据的URL和点击之前的URL一致时，就不重新下载数据
-                if (url.equals(String.format(Constants.URL.LIST_VIEW_DATA, category[i]))) {
+                if (url.equals(String.format(Constants.URL.LIST_VIEW_DATA, pageindex, strcategory))) {
                     return;
                 }
-                url = String.format(Constants.URL.LIST_VIEW_DATA, category[i]);
+                url = String.format(Constants.URL.LIST_VIEW_DATA, pageindex,strcategory);
                 getData();
             } else {
                 horizontaltv[i].setTextColor(Color.BLACK);
+                tabhorizontaltv[i].setTextColor(Color.BLACK);
                 popupwindowtv[i].setTextColor(Color.BLACK);
             }
         }
@@ -391,11 +425,12 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
                 horizontaltv[i].setTextColor(Color.RED);
                 popupwindowtv[i].setTextColor(Color.RED);
                 horizontal.smoothScrollTo((horizontal.getMaxScrollAmount() / 5) * i, 0);
+                strcategory = category[i];
+                Log.e(TAG, "tabhorizontalGetData---------------->>>" + strcategory);
                 //如果再次点击时，数据的URL和点击之前的URL一致时，就不重新下载数据
-                if (url.equals(String.format(Constants.URL.LIST_VIEW_DATA, category[i]))) {
+                if (url.equals(String.format(Constants.URL.LIST_VIEW_DATA, pageindex,strcategory))) {
                     return;
                 }
-
                 tabLayout.setVisibility(View.GONE);
                 handler.post(new Runnable() {
                     @Override
@@ -403,7 +438,8 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
                         myListView.setSelection(5);
                     }
                 });
-                url = String.format(Constants.URL.LIST_VIEW_DATA, category[i]);
+
+                url = String.format(Constants.URL.LIST_VIEW_DATA,pageindex, strcategory);
                 getData();
 
             } else {
@@ -427,7 +463,9 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
                     hideTabLayout.setVisibility(View.GONE);
                     tabLayout.setVisibility(View.GONE);
                     horizontal.smoothScrollTo((horizontal.getMaxScrollAmount() / 5) * i, 0);
-                    url = String.format(Constants.URL.LIST_VIEW_DATA, category[i]);
+                    strcategory = category[i];
+                    Log.e(TAG, "popToHorizontalGetData---------------->>>" + strcategory);
+                    url = String.format(Constants.URL.LIST_VIEW_DATA,pageindex, strcategory);
                     getData();
                 }
             } else {
@@ -458,6 +496,16 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
         }else {
             imgTop.setVisibility(View.GONE);
         }
+
+        /*//判断是否是最后一条item
+        if (firstVisibleItem+visibleItemCount == totalItemCount){
+            //是最后一条，执行上拉加载下一页数据的操作
+            pageindex++;
+            url = String.format(Constants.URL.LIST_VIEW_DATA, pageindex , strcategory);
+            Log.e(TAG,"pageindex------>"+pageindex+"strcategory------>"+strcategory);
+            getData();
+            //myListView.setSelection(totalItemCount);
+        }*/
     }
 
     //设置listview的触摸事件，用来判断是向上滑动还是向下滑动
@@ -488,5 +536,30 @@ public class HomeFragment2 extends Fragment implements ViewPager.OnPageChangeLis
 
         }
         return false;
+    }
+
+    //viewpager  的适配器
+    class VPAdapter extends FragmentStatePagerAdapter{
+
+        private List<ViewPagerData> vpDatas;
+
+        public VPAdapter(FragmentManager fm, List<ViewPagerData> vpDatas) {
+            super(fm);
+            this.vpDatas = vpDatas;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            ViewPagerFragment vpf = new ViewPagerFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("position", position);
+            vpf.setArguments(bundle);
+            return vpf;
+        }
+
+        @Override
+        public int getCount() {
+            return vpDatas.size();
+        }
     }
 }
