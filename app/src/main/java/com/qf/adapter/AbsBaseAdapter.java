@@ -19,7 +19,7 @@ public abstract class AbsBaseAdapter<T> extends BaseAdapter{
     private Context context;
     private List<T> datas;
 
-    
+
 
     private int resid;
 
